@@ -35,7 +35,7 @@ public class BarrageToImage {
 
         BufferedImage bufferedImage = BarrageImageCreater.imageCreate(size, bullets);
         try {
-            ImageIO.write(bufferedImage, "jpg", new File("output.jpg"));
+            ImageIO.write(bufferedImage, "png", new File("output.jpg"));
         } catch (IOException e) {
             System.err.println("書き込みに失敗");
         }

@@ -39,6 +39,7 @@ public final class BulletManager {
             case "C":
                 return Color.CYAN;
             default: //今はWhiteですが代替手段を考えます。
+                System.err.println("存在しないカラーが指定されました。whiteを適用します");
                 return Color.WHITE;
         }
     }
