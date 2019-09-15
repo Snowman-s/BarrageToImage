@@ -6,11 +6,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,8 +28,14 @@ public class BarrageToImage {
             for (Action action : actions) {
                 bullets.addAll(action.doTask(taskObjects));
             }
-            for (Bullet bullet : bullets) {
+            Iterator<Bullet> iterator = bullets.iterator();
+            while (iterator.hasNext()) {
+                Bullet bullet = iterator.next();
                 bullet.move(1);
+                double x = bullet.location.x, y = bullet.location.y;
+                if (x < 0 || x > size - 1 || y < 0 || y > size - 1) {
+                    iterator.remove();
+                }
             }
         }
 
@@ -43,7 +49,7 @@ public class BarrageToImage {
 
     public static List<String> loadCode() {
         try {
-            Path p = Paths.get("./code.txt");
+            Path p = Paths.get("code.txt");
             return Files.readAllLines(p);
         } catch (Exception e) {
             e.printStackTrace();
