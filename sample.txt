@@ -1,0 +1,5 @@
+#barragephoto 20
+enemyset 0 50 50
+allway 5 Y 1 8 0
+copy 10
+enemyset 8 25 25
