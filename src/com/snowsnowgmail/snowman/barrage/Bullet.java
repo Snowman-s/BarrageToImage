@@ -25,12 +25,4 @@ public class Bullet {
         this.location.x += dx;
         this.location.y += dy;
     }
-
-    public static List<Bullet> allWay(PointD location, int number, float speed, Color color) {
-        List<Bullet> bullets = new LinkedList<>();
-        for (float i = 0; i < 360F; i += 360F / number) {
-            bullets.add(new Bullet(color, location, speed, i));
-        }
-        return bullets;
-    }
 }
