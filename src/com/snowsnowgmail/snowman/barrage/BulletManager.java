@@ -71,11 +71,12 @@ public final class BulletManager {
                                 Integer.parseInt(words[4]), Float.parseFloat(words[5]));
                         action.frame = Integer.parseInt(words[1]);
                         actions.add(action);
+                        break;
                     }
                     case "copy": {
-                        Action action = actions.get(actions.size() - 1);
-                        actions.add(action);
+                        Action action = actions.get(actions.size() - 1).clone();
                         action.frame = Integer.parseInt(words[1]);
+                        actions.add(action);
                         break;
                     }
                 }

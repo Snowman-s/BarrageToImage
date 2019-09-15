@@ -6,7 +6,7 @@ import com.snowsnowgmail.snowman.barrage.PointD;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Action {
+public abstract class Action implements Cloneable {
     public int frame;
     public boolean retryByframe = false;
     private int taskCalledCount = 0;
@@ -18,14 +18,14 @@ public abstract class Action {
         if (retryByframe) {
             if (taskCalledCount % frame == 0) {
                 List<Bullet> returns = taskBody(objects);
-                if(returns != null) {
+                if (returns != null) {
                     bullets.addAll(returns);
                 }
             }
         } else {
             if (taskCalledCount == frame) {
                 List<Bullet> returns = taskBody(objects);
-                if(returns != null) {
+                if (returns != null) {
                     bullets.addAll(returns);
                 }
             }
@@ -35,4 +35,22 @@ public abstract class Action {
     }
 
     public abstract List<Bullet> taskBody(Object[] objects);
+
+    public Action clone() {
+        Action copy;
+        try {
+            copy = (Action) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        copy.taskCalledCount = this.taskCalledCount;
+        copy.retryByframe = this.retryByframe;
+        copy.frame = this.frame;
+        return copy;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getName() + "[frame:" + frame + ",task:" + taskCalledCount + "]";
+    }
 }

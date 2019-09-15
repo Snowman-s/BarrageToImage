@@ -19,4 +19,11 @@ public class EnemyMove extends Action {
         ((PointD) objects[0]).y = this.y;
         return null;
     }
+
+    public EnemyMove clone() {
+        EnemyMove copy = (EnemyMove) super.clone();
+        copy.x = this.x;
+        copy.y = this.y;
+        return copy;
+    }
 }

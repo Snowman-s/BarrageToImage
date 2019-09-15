@@ -27,4 +27,13 @@ public class AllWay extends Action {
     public List<Bullet> taskBody(Object[] objects) {
         return BulletManager.allWay((PointD) objects[0], way, speed, color, startangle);
     }
+
+    public AllWay clone() {
+        AllWay copy = (AllWay) super.clone();
+        copy.color = this.color;
+        copy.speed = this.speed;
+        copy.way = this.way;
+        copy.startangle = this.startangle;
+        return copy;
+    }
 }
