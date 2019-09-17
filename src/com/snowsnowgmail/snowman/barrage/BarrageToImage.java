@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class BarrageToImage {
-    public static int size = 100;
+    public static int size = 2000;
     public static List<Bullet> bullets = new LinkedList<>();
 
     public static void main(String[] args) {

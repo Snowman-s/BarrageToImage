@@ -75,9 +75,11 @@ public final class BulletManager {
                         break;
                     }
                     case "copy": {
-                        Action action = actions.get(actions.size() - 1).clone();
-                        action.frame = Integer.parseInt(words[1]);
-                        actions.add(action);
+                        for (int j = 1; j < words.length ; j++) {
+                            Action action = actions.get(actions.size() - 1).clone();
+                            action.frame = Integer.parseInt(words[j]);
+                            actions.add(action);
+                        }
                         break;
                     }
                 }
