@@ -9,10 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BarrageToImage {
     public static int size = 2000;
@@ -24,19 +21,20 @@ public class BarrageToImage {
         //EnemyLocation, PhotoFrame;
         Object[] taskObjects = new Object[]{location, 1};
 
-        for (int i = 0; i < (Integer) taskObjects[1]; i++) {
-            for (Action action : actions) {
-                bullets.addAll(action.doTask(taskObjects));
-            }
-            Iterator<Bullet> iterator = bullets.iterator();
+        actions.sort(Comparator.comparingInt(i -> i.frame));
+
+        for (Action action : actions) {
+            List<Bullet> actionBullet = action.doTask(taskObjects);
+            Iterator<Bullet> iterator = actionBullet.iterator();
             while (iterator.hasNext()) {
                 Bullet bullet = iterator.next();
-                bullet.move(1);
+                bullet.move((Integer) taskObjects[1] - bullet.createdFrame);
                 double x = bullet.location.x, y = bullet.location.y;
                 if (x < 0 || x > size - 1 || y < 0 || y > size - 1) {
                     iterator.remove();
                 }
             }
+            bullets.addAll(actionBullet);
         }
 
         BufferedImage bufferedImage = BarrageImageCreater.imageCreate(size, bullets);

@@ -13,10 +13,10 @@ public final class BulletManager {
     private BulletManager() {
     }
 
-    public static List<Bullet> allWay(PointD location, int number, float speed, Color color, float start) {
+    public static List<Bullet> allWay(int frame, PointD location, int number, float speed, Color color, float start) {
         List<Bullet> bullets = new LinkedList<>();
         for (float i = start; i < 360F + start; i += 360F / number) {
-            bullets.add(new Bullet(color, location, speed, i));
+            bullets.add(new Bullet(color, location, speed, i, frame));
         }
         return bullets;
     }
@@ -75,7 +75,7 @@ public final class BulletManager {
                         break;
                     }
                     case "copy": {
-                        for (int j = 1; j < words.length ; j++) {
+                        for (int j = 1; j < words.length; j++) {
                             Action action = actions.get(actions.size() - 1).clone();
                             action.frame = Integer.parseInt(words[j]);
                             actions.add(action);

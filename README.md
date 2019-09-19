@@ -15,7 +15,7 @@ mainは com.snowsnowgmail.snowman.barrage.BarrageToImage に有ります。(引�
   - C (Cyan)
 
 - 使用できるコード
-  - #barragephoto \<frame\> (一番最初に一回だけ記述。このフレームの写真を撮る。)
+  - \#barragephoto \<frame\> (一番最初に一回だけ記述。このフレームの写真を撮る。)
   - enemyset \<frame\> \<x\> \<y\>  (弾発射位置をここにする。)
   - allway \<frame\> \<color\> \<speed\> \<way\> \<startangle\> (弾発射位置からstartangleよりway数の全方向弾を放つ。)
   - copy \<frame\> \<frame2\> \<frame3\> ... (直前のコードと同じ処理をこのフレームで実行する。(引数の数だけコピーされる。))

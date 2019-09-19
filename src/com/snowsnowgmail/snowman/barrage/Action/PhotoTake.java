@@ -13,7 +13,7 @@ public class PhotoTake extends Action {
     }
 
     @Override
-    public List<Bullet> taskBody(Object[] objects) {
+    public List<Bullet> taskBody(int frame, Object[] objects) {
         objects[1] = photoFrame;
         return null;
     }

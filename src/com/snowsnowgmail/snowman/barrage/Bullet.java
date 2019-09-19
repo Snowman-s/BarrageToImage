@@ -1,23 +1,22 @@
 package com.snowsnowgmail.snowman.barrage;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Bullet {
     public Color color;
 
-    public Bullet(Color color, PointD location, float speed, float angle) {
+    public Bullet(Color color, PointD location, float speed, float angle, int createdFrame) {
         this.color = color;
         this.location = new PointD(location);
         this.speed = speed;
         this.angle = angle;
+        this.createdFrame = createdFrame;
     }
 
     public PointD location;
     public float speed;
     public float angle;
+    public int createdFrame = -1;
 
     public void move(int frame) {
         double rad = Math.toRadians(angle);

@@ -14,7 +14,7 @@ public class EnemyMove extends Action {
     }
 
     @Override
-    public List<Bullet> taskBody(Object[] objects) {
+    public List<Bullet> taskBody(int frame, Object[] objects) {
         ((PointD) objects[0]).x = this.x;
         ((PointD) objects[0]).y = this.y;
         return null;

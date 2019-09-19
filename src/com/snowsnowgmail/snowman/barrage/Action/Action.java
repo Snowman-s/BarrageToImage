@@ -9,32 +9,26 @@ import java.util.List;
 public abstract class Action implements Cloneable {
     public int frame;
     public boolean retryByframe = false;
-    private int taskCalledCount = 0;
 
     //1:enemy.location
     public final List<Bullet> doTask(Object[] objects) {
         assert objects[0] instanceof PointD;
         List<Bullet> bullets = new ArrayList<>();
         if (retryByframe) {
-            if (taskCalledCount % frame == 0) {
-                List<Bullet> returns = taskBody(objects);
-                if (returns != null) {
-                    bullets.addAll(returns);
-                }
+            List<Bullet> returns = taskBody(frame, objects);
+            if (returns != null) {
+                bullets.addAll(returns);
             }
         } else {
-            if (taskCalledCount == frame) {
-                List<Bullet> returns = taskBody(objects);
-                if (returns != null) {
-                    bullets.addAll(returns);
-                }
+            List<Bullet> returns = taskBody(frame, objects);
+            if (returns != null) {
+                bullets.addAll(returns);
             }
         }
-        taskCalledCount++;
         return bullets;
     }
 
-    public abstract List<Bullet> taskBody(Object[] objects);
+    public abstract List<Bullet> taskBody(int frame, Object[] objects);
 
     public Action clone() {
         Action copy;
@@ -43,7 +37,6 @@ public abstract class Action implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e.getMessage());
         }
-        copy.taskCalledCount = this.taskCalledCount;
         copy.retryByframe = this.retryByframe;
         copy.frame = this.frame;
         return copy;
@@ -51,6 +44,6 @@ public abstract class Action implements Cloneable {
 
     @Override
     public String toString() {
-        return this.getClass().getName() + "[frame:" + frame + ",task:" + taskCalledCount + "]";
+        return this.getClass().getName() + "[frame:" + frame + "]";
     }
 }

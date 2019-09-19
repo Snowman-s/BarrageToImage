@@ -24,8 +24,8 @@ public class AllWay extends Action {
     }
 
     @Override
-    public List<Bullet> taskBody(Object[] objects) {
-        return BulletManager.allWay((PointD) objects[0], way, speed, color, startangle);
+    public List<Bullet> taskBody(int frame, Object[] objects) {
+        return BulletManager.allWay(frame, (PointD) objects[0], way, speed, color, startangle);
     }
 
     public AllWay clone() {
