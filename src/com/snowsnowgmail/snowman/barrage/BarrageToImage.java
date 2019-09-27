@@ -21,20 +21,30 @@ public class BarrageToImage {
         //EnemyLocation, PhotoFrame;
         Object[] taskObjects = new Object[]{location, 1};
 
-        actions.sort(Comparator.comparingInt(i -> i.frame));
+        actions.sort(Comparator.comparingInt(i -> i.frame.frame));
 
-        for (Action action : actions) {
-            List<Bullet> actionBullet = action.doTask(taskObjects);
-            Iterator<Bullet> iterator = actionBullet.iterator();
+        for (int i = 0; i < (Integer) taskObjects[1]; i++) {
+            for (Action action : actions) {
+                if (action.frame.replay) {
+                    if (action.frame.frame != 0) {
+                        if (i % action.frame.frame == 0) {
+                            bullets.addAll(action.doTask(taskObjects));
+                        }
+                    }
+                } else if (action.frame.frame == i) {
+                    bullets.addAll(action.doTask(taskObjects));
+                }
+            }
+
+            Iterator<Bullet> iterator = bullets.iterator();
             while (iterator.hasNext()) {
                 Bullet bullet = iterator.next();
-                bullet.move((Integer) taskObjects[1] - bullet.createdFrame);
+                bullet.move(1/*(Integer) taskObjects[1] - bullet.createdFrame*/);
                 double x = bullet.location.x, y = bullet.location.y;
                 if (x < 0 || x > size - 1 || y < 0 || y > size - 1) {
                     iterator.remove();
                 }
             }
-            bullets.addAll(actionBullet);
         }
 
         BufferedImage bufferedImage = BarrageImageCreater.imageCreate(size, bullets);

@@ -5,7 +5,6 @@ import com.snowsnowgmail.snowman.barrage.BulletManager;
 import com.snowsnowgmail.snowman.barrage.PointD;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 //allway <framen> <color> <speed> <way> <startangle>

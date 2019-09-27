@@ -60,26 +60,26 @@ public final class BulletManager {
                 switch (words[0]) {
                     case "enemyset" -> {
                         Action action = new EnemyMove(Float.parseFloat(words[2]), Float.parseFloat(words[3]));
-                        action.frame = Integer.parseInt(words[1]);
+                        action.frame.setInfo(words[1]);
                         actions.add(action);
                     }
                     case "allway" -> {
                         Action action = new AllWay(getColor(words[2]), Float.parseFloat(words[3]),
                                 Integer.parseInt(words[4]), Float.parseFloat(words[5]));
-                        action.frame = Integer.parseInt(words[1]);
+                        action.frame.setInfo(words[1]);
                         actions.add(action);
                     }
                     case "shot" -> {
                         Action action = new Shot(getColor(words[2]),
                                 Float.parseFloat(words[3]),
                                 Float.parseFloat(words[4]));
-                        action.frame = Integer.parseInt(words[1]);
+                        action.frame.setInfo(words[1]);
                         actions.add(action);
                     }
                     case "copy" -> {
                         for (int j = 1; j < words.length; j++) {
                             Action action = actions.get(actions.size() - 1).clone();
-                            action.frame = Integer.parseInt(words[j]);
+                            action.frame.setInfo(words[j]);
                             actions.add(action);
                         }
                     }

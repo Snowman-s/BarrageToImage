@@ -8,7 +8,6 @@ public class PhotoTake extends Action {
     private int photoFrame;
 
     public PhotoTake(int photoFrame) {
-        frame = 0;
         this.photoFrame = photoFrame;
     }
 
