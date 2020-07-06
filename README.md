@@ -1,7 +1,7 @@
 # BarrageToImage
 ## コード風文字列から弾幕のドット画像を生成します。
 
-カレントディレクトリにcode.txtをsample.txtのような形式で記述してから実行してください。  
+sample.txtのような形式で記述されたテキストファイルを用意して、起動引数の一つ目にパスを指定して実行してください。  
 mainは com.snowsnowgmail.snowman.barrage.BarrageToImage に有ります。(引数は取りません)  
 生成画像の大きさは2000 * 2000であり、座標もこれに従います。
 
