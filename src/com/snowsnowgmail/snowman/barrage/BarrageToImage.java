@@ -16,7 +16,7 @@ public class BarrageToImage {
     public static List<Bullet> bullets = new LinkedList<>();
 
     public static void main(String[] args) {
-        List<Action> actions = BulletManager.codeRead(BarrageToImage.loadCode());
+        List<Action> actions = BulletManager.codeRead(BarrageToImage.loadCode(args[0]));
         PointD location = new PointD(size / 2F, size / 2F);
         //EnemyLocation, PhotoFrame;
         Object[] taskObjects = new Object[]{location, 1};
@@ -55,9 +55,9 @@ public class BarrageToImage {
         }
     }
 
-    public static List<String> loadCode() {
+    public static List<String> loadCode(String fileName) {
         try {
-            Path p = Paths.get("code.txt");
+            Path p = Paths.get(fileName);
             return Files.readAllLines(p);
         } catch (Exception e) {
             e.printStackTrace();
