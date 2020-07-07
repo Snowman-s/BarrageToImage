@@ -1,5 +1,21 @@
-#barragephoto 20
-enemyset 0 50 50
-allway 5 Y 1 8 0
-copy 10
-enemyset 8 25 25
+#barragephoto 40
+enemyset 0 250 250
+copy 20
+
+allway 0 G 8 36 0
+copy 7
+copy 9
+copy 11
+copy 13
+
+enemyset 13 125 125
+allway 15 B 15 32 0
+copy 17
+copy 19
+allway 16 B 15 16 3
+copy 18
+
+allway 31 R 6 16 0
+copy 32
+allway 33 R 6 16 14.4
+copy 34
