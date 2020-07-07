@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class BarrageToImage {
-    public static int size = 2000;
+    public static final int size = 500;
     public static List<Bullet> bullets = new LinkedList<>();
 
     public static void main(String[] args) {
